@@ -1,7 +1,7 @@
 # Homelab-Docker-Compose
 ## Table of Contents
-* [Hardware](#hardware)
-* [Containers](#containers)
+* [Hardware](#🔩-hardware)
+* [Containers](#🫙-containers)
 ## 🔩 Hardware
 ### Homelab
 | [Intel NUC 12 Pro Kit NUC12WSKi3](https://www.intel.com/content/www/us/en/products/sku/121613/intel-nuc-12-pro-kit-nuc12wski3/specifications.html) | [Crucial P5 Plus M.2 2280](https://www.amazon.com/gp/product/B098WL46RS/ref=ppx_yo_dt_b_asin_title_o01_s00?ie=UTF8&th=1) | [Crucial 64GB Kit (2 x 32GB) DDR4-3200](https://static.bhphoto.com/images/images500x500/1605087322_1600343.jpg) |
