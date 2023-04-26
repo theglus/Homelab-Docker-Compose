@@ -14,6 +14,8 @@ services:
       - VPN_PASS=${VPN_PASSWORD}
       - VPN_PROV=pia
       - VPN_OPTS=--name pia
+    env_file:
+      - ../.env
     volumes:
       - /docker/qbittorrent/appdata:/config
       - /mnt/nibbler/apps/Torrents:/downloads
@@ -38,6 +40,8 @@ services:
       - VPN_PASSWORD=${VPN_PASSWORD}
       - VPN_FILES=expressvpn.ovpn
       - VPN_OPTS=--inactive 3600 --ping 10 --ping-exit 60
+    env_file:
+      - ../.env
     volumes:
       - /docker/openvpn:/vpn
     restart: unless-stopped

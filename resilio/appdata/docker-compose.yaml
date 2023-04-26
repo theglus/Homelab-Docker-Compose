@@ -8,6 +8,8 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Etc/UTC
+    env_file:
+      - ../.env
     volumes:
       - /docker/resilio/appdata:/config
       - /mnt/nibbler/apps/Resilio/downloads:/downloads

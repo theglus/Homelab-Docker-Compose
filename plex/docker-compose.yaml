@@ -11,6 +11,8 @@ services:
       - TZ=Etc/UTC
       - VERSION=docker
       - PLEX_CLAIM=${PLEX_CLAIM_TOKEN}
+    env_file:
+      - ../.env
     volumes:
       - /docker/plex/appdata:/config
       - /mnt/nibbler/media:/media

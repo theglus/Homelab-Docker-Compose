@@ -8,6 +8,8 @@ services:
     command: tunnel run
     environment:
       - TUNNEL_TOKEN=${CLOUDFLARED_TUNNEL_NAS}
+    env_file:
+      - ../.env
     restart: unless-stopped
 # Tunnel for Hermes SSH
   cloudflared-hermes:
@@ -16,6 +18,8 @@ services:
     command: tunnel run
     environment:
       - TUNNEL_TOKEN=${CLOUDFLARED_TUNNEL_HERMES}
+    env_file:
+      - ../.env
     restart: unless-stopped
 # Tunnel for Nibbler SSH
   cloudflared-nibbler:
@@ -24,6 +28,8 @@ services:
     command: tunnel run
     environment:
       - TUNNEL_TOKEN=${CLOUDFLARED_TUNNEL_NIBBLER}
+    env_file:
+      - ../.env
     restart: unless-stopped
 # Tunnel for Scruffy SSH
   cloudflared-scruffy:
@@ -32,4 +38,6 @@ services:
     command: tunnel run
     environment:
       - TUNNEL_TOKEN=${CLOUDFLARED_TUNNEL_SCRUFFY}
+    env_file:
+      - ../.env
     restart: unless-stopped

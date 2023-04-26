@@ -8,6 +8,8 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Etc/UTC
+    env_file:
+      - ../.env
     volumes:
       - /docker/heimdall/appdata:/config
     ports:
@@ -21,4 +23,6 @@ services:
     command: tunnel run
     environment:
       - TUNNEL_TOKEN=${CLOUDFLARED_TUNNEL_HEIMDALL}
+    env_file:
+      - ../.env
     restart: unless-stopped
