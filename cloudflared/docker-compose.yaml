@@ -1,0 +1,35 @@
+---
+version: "3"
+services:
+# Tunnel used for TrueNAS
+  cloudflare-truenas:
+    image: cloudflare/cloudflared:latest 
+    container_name: cloudflared-truenas
+    command: tunnel run
+    environment:
+      - TUNNEL_TOKEN=${CLOUDFLARED_TUNNEL_NAS}
+    restart: unless-stopped
+# Tunnel for Hermes SSH
+  cloudflared-hermes:
+    image: cloudflare/cloudflared:latest 
+    container_name: cloudflared-hermes
+    command: tunnel run
+    environment:
+      - TUNNEL_TOKEN=${CLOUDFLARED_TUNNEL_HERMES}
+    restart: unless-stopped
+# Tunnel for Nibbler SSH
+  cloudflared-nibbler:
+    image: cloudflare/cloudflared:latest 
+    container_name: cloudflared-nibbler
+    command: tunnel run
+    environment:
+      - TUNNEL_TOKEN=${CLOUDFLARED_TUNNEL_NIBBLER}
+    restart: unless-stopped
+# Tunnel for Scruffy SSH
+  cloudflared-scruffy:
+    image: cloudflare/cloudflared:latest 
+    container_name: cloudflared-scruffy
+    command: tunnel run
+    environment:
+      - TUNNEL_TOKEN=${CLOUDFLARED_TUNNEL_SCRUFFY}
+    restart: unless-stopped
