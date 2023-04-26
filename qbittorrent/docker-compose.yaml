@@ -1,0 +1,43 @@
+---
+version: "2.1"
+services:  
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Los_Angeles
+      - WEBUI_PORT=8080
+      - VPN_ENABLED=yes
+      - VPN_USER=${VPN_USERNAME}
+      - VPN_PASS=${VPN_PASSWORD}
+      - VPN_PROV=pia
+      - VPN_OPTS=--name pia
+    volumes:
+      - /docker/qbittorrent/appdata:/config
+      - /nibbler/apps/Torrents:/downloads
+      - /nibbler/media:/media
+    ports:
+      - 8080:8080
+      - 6881:6881
+      - 6881:6881/udp
+    restart: unless-stopped
+    depends_on:
+      - vpn
+
+  vpn:
+    image: ghcr.io/dperson/openvpn-client
+    container_name: openvpn
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - TZ=America/Los_Angeles
+      - VPN_PROVIDER=pia
+      - VPN_USERNAME=${VPN_USERNAME}
+      - VPN_PASSWORD=${VPN_PASSWORD}
+      - VPN_FILES=expressvpn.ovpn
+      - VPN_OPTS=--inactive 3600 --ping 10 --ping-exit 60
+    volumes:
+      - /docker/openvpn:/vpn
+    restart: unless-stopped
