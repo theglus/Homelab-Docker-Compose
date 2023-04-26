@@ -1,0 +1,5 @@
+# Ignore Sensitive File
+.env
+
+# Ignore System Files
+.DS_Store
