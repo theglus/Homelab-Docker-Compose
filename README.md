@@ -4,9 +4,9 @@
 * [Containers](#containers)
 ## 🔩 Hardware
 ### Homelab
-* [Intel NUC 12 Pro Kit NUC12WSKi3](https://www.intel.com/content/www/us/en/products/sku/121613/intel-nuc-12-pro-kit-nuc12wski3/specifications.html)
-* [Crucial P5 Plus M.2 2280](https://www.amazon.com/gp/product/B098WL46RS/ref=ppx_yo_dt_b_asin_title_o01_s00?ie=UTF8&th=1)
-* [Crucial 64GB Kit (2 x 32GB) DDR4-3200](https://www.crucial.com/memory/ddr4/ct2k32g4sfd832a)
+| [Intel NUC 12 Pro Kit NUC12WSKi3](https://www.intel.com/content/www/us/en/products/sku/121613/intel-nuc-12-pro-kit-nuc12wski3/specifications.html) | [Crucial P5 Plus M.2 2280](https://www.amazon.com/gp/product/B098WL46RS/ref=ppx_yo_dt_b_asin_title_o01_s00?ie=UTF8&th=1) | [Crucial 64GB Kit (2 x 32GB) DDR4-3200](https://www.crucial.com/memory/ddr4/ct2k32g4sfd832a) |
+| --- | --- | --- |
+| ![Intel NUC 12 Pro Kit NUC12WSKi3](https://simplynuc.com/wp-content/uploads/2022/09/K-Front-Angle_Wallstreet_Slim.png) | ![Crucial P5 Plus M.2 2280](https://content.crucial.com/content/dam/crucial/ssd-products/p5-plus/images/products/crucial-p5-plus-ssd-flat-front-image.psd.transform/medium-png/image.png) | ![Crucial 64GB Kit (2 x 32GB) DDR4-3200](https://content.crucial.com/content/dam/crucial/dram-products/laptop/images/product/crucial-ddr4-sodimm-kit2-image.psd.transform/medium-png/image.png) 
 ### Networking
 * [Google Wifi](https://store.google.com/us/product/google_wifi_2nd_gen?hl=en-US)
 * [Netgear Managed Switch](https://www.amazon.com/gp/product/B07PLFCQVK/ref=ppx_yo_dt_b_asin_title_o08_s00?ie=UTF8&psc=1)
