@@ -10,10 +10,10 @@ services:
       - TZ=Etc/UTC
     volumes:
       - /docker/resilio/appdata:/config
-      - /nibbler/apps/Resilio/downloads:/downloads
-      - /nibbler/apps/Resilio/sync:/sync
-      - /nibbler/media:/sync/media
-      - /nibbler/games:/sync/games
+      - /mnt/nibbler/apps/Resilio/downloads:/downloads
+      - /mnt/nibbler/apps/Resilio/sync:/sync
+      - /mnt/nibbler/media:/sync/media
+      - /mnt/nibbler/games:/sync/games
     ports:
       - 8888:8888
       - 55555:55555

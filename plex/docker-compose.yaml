@@ -13,5 +13,5 @@ services:
       - PLEX_CLAIM=${PLEX_CLAIM_TOKEN}
     volumes:
       - /docker/plex/appdata:/config
-      - /nibbler/media:/media
+      - /mnt/nibbler/media:/media
     restart: unless-stopped

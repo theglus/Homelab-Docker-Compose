@@ -16,8 +16,8 @@ services:
       - VPN_OPTS=--name pia
     volumes:
       - /docker/qbittorrent/appdata:/config
-      - /nibbler/apps/Torrents:/downloads
-      - /nibbler/media:/media
+      - /mnt/nibbler/apps/Torrents:/downloads
+      - /mnt/nibbler/media:/media
     ports:
       - 8080:8080
       - 6881:6881
