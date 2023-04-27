@@ -6,9 +6,9 @@
 My main motivation when building out my Homelab was to segregate my containers on one device and storage on another. I previously had been running all my apps on my DIY NAS using TrueCharts within TrueNAS Scale. 
 ### Homelab
 My Homelab is run on a Gen 12 Intel NUC maxed out with 64GB of memory.
-| [Intel NUC 12 Pro Kit NUC12WSKi3](https://www.intel.com/content/www/us/en/products/sku/121613/intel-nuc-12-pro-kit-nuc12wski3/specifications.html) | [Crucial P5 Plus M.2 2280](https://www.amazon.com/gp/product/B098WL46RS/ref=ppx_yo_dt_b_asin_title_o01_s00?ie=UTF8&th=1) | [Crucial 64GB Kit (2 x 32GB) DDR4-3200](https://static.bhphoto.com/images/images500x500/1605087322_1600343.jpg) |
+| [Intel NUC 12 Pro Kit NUC12WSKi3](https://www.intel.com/content/www/us/en/products/sku/121613/intel-nuc-12-pro-kit-nuc12wski3/specifications.html) | [Crucial P5 Plus M.2 2280](https://www.amazon.com/gp/product/B098WL46RS/ref=ppx_yo_dt_b_asin_title_o01_s00?ie=UTF8&th=1) | [Crucial 64GB Kit (2 x 32GB) DDR4-3200](https://www.amazon.com/gp/product/B07ZLCVKPV/ref=ppx_yo_dt_b_asin_title_o04_s00?ie=UTF8&psc=1) |
 | --- | --- | --- |
-| ![Intel NUC 12 Pro Kit NUC12WSKi3](https://simplynuc.com/wp-content/uploads/2022/09/K-Front-Angle_Wallstreet_Slim.png) | ![Crucial P5 Plus M.2 2280](https://static.bhphoto.com/images/multiple_images/images500x500/1668449643_IMG_1570381.jpg) | ![Crucial 64GB Kit (2 x 32GB) DDR4-3200](https://static.bhphoto.com/images/images500x500/1605087322_1600343.jpg) 
+| ![Intel NUC 12 Pro Kit NUC12WSKi3](https://home-assistant-readme.s3.amazonaws.com/nuc.png) | ![Crucial P5 Plus M.2 2280](https://home-assistant-readme.s3.amazonaws.com/nuc_ssd.jpg) | ![Crucial 64GB Kit (2 x 32GB) DDR4-3200](https://home-assistant-readme.s3.amazonaws.com/nuc_ram.jpg) 
 
 I'm currently running Ubuntu Server 20.04.2 LTS as I wanted a dependable OS to run headless. 
 ### Networking
