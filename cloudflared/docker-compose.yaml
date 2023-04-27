@@ -11,13 +11,13 @@ services:
     env_file:
       - ../.env
     restart: unless-stopped
-# Tunnel for Hermes SSH
-  cloudflared-hermes:
+# Tunnel for Leela SSH
+  cloudflared-leela:
     image: cloudflare/cloudflared:latest 
-    container_name: cloudflared-hermes
+    container_name: cloudflared-leela
     command: tunnel run
     environment:
-      - TUNNEL_TOKEN=${CLOUDFLARED_TUNNEL_HERMES}
+      - TUNNEL_TOKEN=${CLOUDFLARED_TUNNEL_LEELA}
     env_file:
       - ../.env
     restart: unless-stopped
