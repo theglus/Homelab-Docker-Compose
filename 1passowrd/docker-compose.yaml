@@ -1,0 +1,9 @@
+---
+version: '3'
+services:
+  op:
+    image: 1password/op
+    container_name: 1password
+    volumes:
+      - $HOME/.op:/home/opuser/.op
+    entrypoint: /bin/bash
