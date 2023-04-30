@@ -12,7 +12,7 @@ My Homelab is run on a Gen 12 Intel NUC maxed out with 64GB of memory.
 
 I'm currently running Ubuntu Server 20.04.2 LTS as I wanted a dependable OS to run headless. 
 ### NAS
-I took the DIY NAS approach as I was super interested in getting up-and-running with TrueNAS Scale. 
+I took the DIY NAS approach as I was super interested in getting up-and-running with [TrueNAS Scale](https://www.truenas.com/truenas-scale/). 
 - **CPU**: Intel i3-4150 + Stock Cooler
 - **MOBO**: Asus H81I-Plus Mini ITX
 - **RAM**: 16GB DDR3 1600 MHz (2 x 8GB)
