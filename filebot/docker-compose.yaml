@@ -4,10 +4,15 @@ services:
   filebot:
     image: jlesage/filebot
     container_name: filebot
+    environment:
+      - PUID=1000
+      - PGID=999
+      - TZ=Etc/UTC      
     env_file:
       - ../.env
     ports:
       - 5800:5800
     volumes:
-      - "/docker/appdata/filebot:/config:rw"
+      - "/docker/filebot/appdata:/config:rw"
       - "/home/user:/storage:rw"
+      - "/mnt/media:/nas/media:rw"
