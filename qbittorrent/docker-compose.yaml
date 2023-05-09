@@ -6,42 +6,32 @@ services:
     container_name: qbittorrent
     environment:
       - PUID=1000
-      - PGID=1000
+      - PGID=999
       - TZ=America/Los_Angeles
-      - WEBUI_PORT=8080
-      - VPN_ENABLED=yes
-      - VPN_USER=${VPN_USERNAME}
-      - VPN_PASS=${VPN_PASSWORD}
-      - VPN_PROV=pia
-      - VPN_OPTS=--name pia
-    env_file:
-      - ../.env
+      - WEBUI_PORT=10095
+    network_mode: "service:gluetun"
     volumes:
-      - /docker/qbittorrent/appdata:/config
-      - /mnt/nibbler/apps/Torrents:/downloads
-      - /mnt/nibbler/media:/media
-    ports:
-      - 8080:8080
-      - 6881:6881
-      - 6881:6881/udp
+      - ~/docker/qbittorrent/appdata:/config
+      - ~/docker/qbittorrent/downloads:/downloads
+        # - /mnt/nibbler/apps/Torrents:/downloads
+      - /mnt/media:/nas/media
     restart: unless-stopped
     depends_on:
-      - vpn
+      - gluetun
 
-  vpn:
-    image: ghcr.io/dperson/openvpn-client
-    container_name: openvpn
+  gluetun:
+    image: qmcgaw/gluetun
+    container_name: expressvpn
     cap_add:
       - NET_ADMIN
     environment:
-      - TZ=America/Los_Angeles
-      - VPN_PROVIDER=pia
-      - VPN_USERNAME=${VPN_USERNAME}
-      - VPN_PASSWORD=${VPN_PASSWORD}
-      - VPN_FILES=expressvpn.ovpn
-      - VPN_OPTS=--inactive 3600 --ping 10 --ping-exit 60
-    env_file:
-      - ../.env
-    volumes:
-      - /docker/openvpn:/vpn
+      - VPN_SERVICE_PROVIDER=expressvpn
+      - OPENVPN_USER=${VPN_USERNAME}
+      - OPENVPN_PASSWORD=${VPN_PASSWORD}
+      - SERVER_COUNTRIES=USA
+    network_mode: bridge
+    ports:
+      - 10095:10095
+      - 6881:6881
+      - 6881:6881/udp
     restart: unless-stopped
