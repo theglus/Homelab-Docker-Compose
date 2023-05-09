@@ -8,11 +8,8 @@ services:
       - PUID=1000
       - PGID=999
       - TZ=Etc/UTC      
-    env_file:
-      - ../.env
     ports:
       - 5800:5800
     volumes:
-      - "/docker/filebot/appdata:/config:rw"
-      - "/home/user:/storage:rw"
+      - "~/docker/filebot/appdata:/config:rw"
       - "/mnt/media:/nas/media:rw"
