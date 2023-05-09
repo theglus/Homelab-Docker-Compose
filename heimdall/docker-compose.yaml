@@ -10,9 +10,9 @@ services:
       - PGID=1000
       - TZ=Etc/UTC
     env_file:
-      - ../.env
+      - ~/docker/.env
     volumes:
-      - /docker/heimdall/appdata:/config
+      - ~/docker/heimdall/appdata:/config
     ports:
       - 10014:80
       - 10015:443
