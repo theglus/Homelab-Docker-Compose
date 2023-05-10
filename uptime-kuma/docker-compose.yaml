@@ -1,0 +1,20 @@
+---
+version: '3.3'
+services:
+  uptime-kuma:
+    image: louislam/uptime-kuma:1
+    container_name: uptime-kuma
+    volumes:
+      - ~/docker/uptime-kuma/appdata:/app/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 3001:3001  # <Host Port>:<Container Port>
+    restart: unless-stopped
+
+  cloudflare-uptime-kuma:  
+    image: cloudflare/cloudflared     
+    container_name: cloudflared-uptime-kuma
+    command: tunnel run
+    environment:
+      - TUNNEL_TOKEN=${CLOUDFLARED_TUNNEL_UPTIME_KUMA}
+    restart: unless-stopped
