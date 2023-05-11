@@ -7,13 +7,11 @@ services:
     network_mode: host
     environment:
       - PUID=1000
-      - PGID=1000
+      - PGID=999
       - TZ=Etc/UTC
       - VERSION=docker
       - PLEX_CLAIM=${PLEX_CLAIM_TOKEN}
-    env_file:
-      - ../.env
     volumes:
-      - /docker/plex/appdata:/config
-      - /mnt/nibbler/media:/media
+      - ~/docker/plex/appdata:/config
+      - /mnt/media:/nas/media
     restart: unless-stopped
