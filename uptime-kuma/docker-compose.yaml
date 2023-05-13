@@ -12,7 +12,7 @@ services:
     restart: unless-stopped
 
   cloudflare-uptime-kuma:  
-    image: cloudflare/cloudflared     
+    image: cloudflare/cloudflared:latest     
     container_name: cloudflared-uptime-kuma
     command: tunnel run
     environment:
