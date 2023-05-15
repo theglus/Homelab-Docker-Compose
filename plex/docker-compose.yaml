@@ -1,5 +1,5 @@
 ---
-version: "3.7"
+version: "2.1"
 services:
   plex:
     image: lscr.io/linuxserver/plex:latest
@@ -8,7 +8,7 @@ services:
     environment:
       - PUID=1000
       - PGID=999
-      - TZ=Etc/UTC
+      - TZ=America/Los_Angeles
       - VERSION=docker
       - PLEX_CLAIM=${PLEX_CLAIM_TOKEN}
     volumes:
