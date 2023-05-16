@@ -6,16 +6,14 @@ services:
     container_name: resilio-sync
     environment:
       - PUID=1000
-      - PGID=1000
-      - TZ=Etc/UTC
-    env_file:
-      - ../.env
+      - PGID=999
+      - TZ=America/Los_Angeles
     volumes:
-      - /docker/resilio/appdata:/config
-      - /mnt/nibbler/apps/Resilio/downloads:/downloads
-      - /mnt/nibbler/apps/Resilio/sync:/sync
-      - /mnt/nibbler/media:/sync/media
-      - /mnt/nibbler/games:/sync/games
+      - ~/docker/resilio/appdata:/config
+      - ~/docker/resilio/downloads:/downloads
+      - ~/docker/resilio/sync:/sync
+      - /mnt/media:/sync/media
+      - /mnt/ROMs:/sync/games
     ports:
       - 8888:8888
       - 55555:55555

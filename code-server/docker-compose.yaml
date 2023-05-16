@@ -7,7 +7,7 @@ services:
     environment:
       - PUID=1000
       - PGID=999
-      - TZ=Etc/UTC
+      - TZ=America/Los_Angeles
         #- PASSWORD=password #optional
         #- HASHED_PASSWORD= #optional
         #- SUDO_PASSWORD=password #optional

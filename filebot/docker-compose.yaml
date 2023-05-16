@@ -7,7 +7,7 @@ services:
     environment:
       - PUID=1000
       - PGID=999
-      - TZ=Etc/UTC      
+      - TZ=America/Los_Angeles     
     ports:
       - 5800:5800
     volumes:

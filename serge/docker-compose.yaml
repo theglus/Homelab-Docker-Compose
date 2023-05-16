@@ -2,20 +2,24 @@
 version: "3.9"
 services:
   serge:
+    image: ghcr.io/nsarrazin/serge:latest
     container_name: serge
-    build: 
-      context: .
-      dockerfile: Dockerfile
-      target: release
-    env_file:
-      - ../.env
+    environment:
+      - TZ=America/Los_Angeles
     volumes:
-      - datadb:/data/db
-      - weights:/usr/src/app/weights/
-      - /etc/localtime:/etc/localtime:ro 
+      - /home/jeffrey/docker/serge/appdata/weights:/usr/src/app/weights
+      - /home/jeffrey/docker/serge/appdata/datadb:/data/db
     ports:
       - 8008:8008
     restart: on-failure
+
+  cloudflare-serge: 
+    container_name: cloudflared-serge 
+    image: cloudflare/cloudflared     
+    command: tunnel run
+    environment:
+      - TUNNEL_TOKEN=${CLOUDFLARED_TUNNEL_SERGE}
+    restart: unless-stopped
 
 volumes:
   datadb:
