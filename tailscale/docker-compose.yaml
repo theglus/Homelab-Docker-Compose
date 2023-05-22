@@ -1,0 +1,12 @@
+---
+version: '3.3'
+services:
+    tailscale:
+        image: tailscale/tailscale
+        container_name: tailscaled
+        environment:
+            - TS_AUTHKEY=${AUTH_KEY}
+        network_mode: host
+        volumes:
+            - ~/docker/tailscale:/var/lib
+            - /dev/net/tun:/dev/net/tun
