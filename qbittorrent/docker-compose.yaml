@@ -13,7 +13,7 @@ services:
     volumes:
       - ~/docker/qbittorrent/appdata:/config
       - ~/docker/qbittorrent/downloads:/downloads
-        # - /mnt/nibbler/apps/Torrents:/downloads
+    # - /mnt/nibbler/apps/Torrents:/downloads
       - /mnt/media:/nas/media
     restart: unless-stopped
     depends_on:

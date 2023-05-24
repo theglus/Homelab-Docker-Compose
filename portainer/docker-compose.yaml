@@ -15,3 +15,13 @@ services:
     ports:
       - 9000:9000
     restart: unless-stopped
+
+  # caddy:
+  #   image: caddy:latest
+  #   container_name: caddy
+  #   volumes:
+  #     - ./Caddyfile:/etc/caddy/Caddyfile # Mount the Caddyfile
+  #   ports:
+  #     - 80:80 # Expose port 80 for HTTP
+  #     - 443:443 # Expose port 443 for HTTPS
+  #   restart: unless-stopped
