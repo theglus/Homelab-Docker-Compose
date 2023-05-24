@@ -4,6 +4,7 @@
 # Ignore Folders
 resilio/sync/*
 resilio/downloads/*
+tailscale/tailscale/*
 # Ignore Sensitive File
 .env
 */expressvpn.ovpn

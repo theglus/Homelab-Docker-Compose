@@ -2,8 +2,8 @@
 version: "2.1"
 services:  
   qbittorrent:
-    image: lscr.io/linuxserver/qbittorrent:latest
     container_name: qbittorrent
+    image: lscr.io/linuxserver/qbittorrent:latest
     environment:
       - PUID=1000
       - PGID=999
@@ -13,17 +13,15 @@ services:
     volumes:
       - ~/docker/qbittorrent/appdata:/config
       - ~/docker/qbittorrent/downloads:/downloads
-        # - /mnt/nibbler/apps/Torrents:/downloads
+    # - /mnt/nibbler/apps/Torrents:/downloads
       - /mnt/media:/nas/media
     restart: unless-stopped
     depends_on:
       - gluetun
 
   gluetun:
-    image: qmcgaw/gluetun
     container_name: expressvpn
-    cap_add:
-      - NET_ADMIN
+    image: qmcgaw/gluetun
     environment:
       - VPN_SERVICE_PROVIDER=expressvpn
       - OPENVPN_USER=${VPN_USERNAME}
@@ -34,4 +32,6 @@ services:
       - 10095:10095
       - 6881:6881
       - 6881:6881/udp
+    cap_add:
+      - NET_ADMIN
     restart: unless-stopped

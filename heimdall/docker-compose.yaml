@@ -3,24 +3,22 @@
 version: "2.1"
 services:
   heimdall:
-    image: lscr.io/linuxserver/heimdall:latest
     container_name: heimdall
+    image: lscr.io/linuxserver/heimdall:latest
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=America/Los_Angeles
-    env_file:
-      - ~/docker/.env
-    volumes:
-      - ~/docker/heimdall/appdata:/config
     ports:
       - 10014:80
       - 10015:443
+    volumes:
+      - ~/docker/heimdall/appdata:/config
     restart: unless-stopped
 
   cloudflare-heimdall:  
-    image: cloudflare/cloudflared     
     container_name: cloudflared-heimdall
+    image: cloudflare/cloudflared     
     command: tunnel run
     environment:
       - TUNNEL_TOKEN=${CLOUDFLARED_TUNNEL_HEIMDALL}

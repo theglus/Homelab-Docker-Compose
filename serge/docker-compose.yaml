@@ -2,15 +2,15 @@
 version: "3.9"
 services:
   serge:
-    image: ghcr.io/nsarrazin/serge:latest
     container_name: serge
+    image: ghcr.io/nsarrazin/serge:latest
     environment:
       - TZ=America/Los_Angeles
+    ports:
+      - 8008:8008
     volumes:
       - /home/jeffrey/docker/serge/appdata/weights:/usr/src/app/weights
       - /home/jeffrey/docker/serge/appdata/datadb:/data/db
-    ports:
-      - 8008:8008
     restart: on-failure
 
   cloudflare-serge: 
