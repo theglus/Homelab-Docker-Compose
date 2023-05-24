@@ -2,12 +2,17 @@
 version: "3.9"
 services:
   frigate:
-    image: ghcr.io/blakeblackshear/frigate:stable
     container_name: frigate
+    image: ghcr.io/blakeblackshear/frigate:stable
     environment:
       - TZ=America/Los_Angeles
       - FRIGATE_HWACCEL=vaapi # Enables QSV hardware acceleration
       - LIBVA_DRIVER_NAME=iHD # Set the VA driver to iHD for Intel GPUs
+    ports:
+      - "5000:5000"
+      - "8554:8554" # RTSP feeds
+      - "8555:8555/tcp" # WebRTC over tcp
+      - "8555:8555/udp" # WebRTC over udp
     volumes:
       - ~/docker/frigate/appdata/config.yaml:/config/config.yml
       - /mnt/frigate:/media/frigate
@@ -22,9 +27,4 @@ services:
     #   resources:
     #     limits:
     #       cpus: '0.5'
-    ports:
-      - "5000:5000"
-      - "8554:8554" # RTSP feeds
-      - "8555:8555/tcp" # WebRTC over tcp
-      - "8555:8555/udp" # WebRTC over udp
     restart: unless-stopped

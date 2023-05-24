@@ -2,8 +2,8 @@
 version: '3'
 services:
   filebot:
-    image: jlesage/filebot
     container_name: filebot
+    image: jlesage/filebot
     environment:
       - PUID=1000
       - PGID=999
