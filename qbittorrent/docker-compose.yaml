@@ -21,7 +21,7 @@ services:
 
   gluetun:
     container_name: expressvpn
-    image: qmcgaw/gluetun
+    image: qmcgaw/gluetun:v3.34
     environment:
       - VPN_SERVICE_PROVIDER=expressvpn
       - OPENVPN_USER=${VPN_USERNAME}
@@ -29,9 +29,68 @@ services:
       - SERVER_COUNTRIES=USA
     network_mode: bridge
     ports:
-      - 10095:10095
       - 6881:6881
       - 6881:6881/udp
+      - 10095:10095 # qBittorrent
+      - 9117:9117 # jackett
+      - 8989:8989 # sonarr
+      - 7878:7878 # radarr
     cap_add:
       - NET_ADMIN
+    restart: unless-stopped
+
+  radarr:
+    container_name: radarr
+    image: lscr.io/linuxserver/radarr:latest
+    environment:
+      - PUID=1000
+      - PGID=999
+      - TZ=America/Los_Angeles
+    network_mode: service:gluetun
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ~/docker/qbittorrent/appdata/radarr:/config
+      - /mnt/media/Movies:/movies
+      - ~/docker/qbittorrent/downloads/radarr:/downloads 
+    restart: unless-stopped
+    depends_on:
+      - jackett
+      - qbittorrent
+
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr
+    environment:
+      - PUID=1000
+      - PGID=999
+      - TZ=America/Los_Angeles
+    network_mode: service:gluetun
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ~/docker/qbittorrent/appdata/sonarr:/config
+      - /mnt/media/Television:/television
+      - ~/docker/qbittorrent/downloads/sonarr:/downloads
+    restart: unless-stopped
+    depends_on:
+      - jackett
+      - qbittorrent
+
+  jackett:
+    container_name: jackett
+    image: lscr.io/linuxserver/jackett:latest
+    environment:
+      - PUID=1000
+      - PGID=999
+      - TZ=America/Los_Angeles
+    network_mode: service:gluetun
+    volumes:
+      - ~/docker/qbittorrent/appdata:/config
+    # labels:
+    #   - autoheal=true
+    #   - com.centurylinklabs.watchtower.depends-on=vpn
+    # healthcheck:
+    #   test: curl google.com || exit 1
+    #   interval: 30s
+    #   timeout: 10s
+    #   retries: 3
     restart: unless-stopped

@@ -6,4 +6,8 @@ services:
     image: containrrr/watchtower
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    command: --interval 900
+    command: --interval 900 --notification telegram
+    environment:
+      - WATCHTOWER_NOTIFICATIONS=telegram
+      - WATCHTOWER_NOTIFICATION_TELEGRAM_TOKEN=${TELEGRAM_TOKEN}
+      - WATCHTOWER_NOTIFICATION_TELEGRAM_CHATID=${TELEGRAM_CHATID}
