@@ -1,0 +1,19 @@
+---
+version: "3.4"
+services:
+  homebox:
+    container_name: homebox
+    image: ghcr.io/hay-kot/homebox:latest
+    environment:
+    - HBOX_LOG_LEVEL=info
+    - HBOX_LOG_FORMAT=text
+    - HBOX_WEB_MAX_UPLOAD_SIZE=10
+    ports:
+      - 3100:7745
+    volumes:
+      - ~/docker/homebox/appdata:/data/
+    restart: unless-stopped
+
+volumes:
+   homebox-data:
+     driver: local
