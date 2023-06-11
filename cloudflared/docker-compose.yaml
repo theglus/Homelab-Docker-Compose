@@ -2,42 +2,10 @@
 version: "3"
 services:
 # Tunnel used for TrueNAS
-#  cloudflare-truenas:
-#    image: cloudflare/cloudflared:latest 
-#    container_name: cloudflared-truenas
-#    command: tunnel run
-#    environment:
-#      - TUNNEL_TOKEN=${CLOUDFLARED_TUNNEL_NAS}
-#    env_file:
-#      - ../.env
-#    restart: unless-stopped
-# Tunnel for Leela SSH
-  cloudflared-leela:
-    image: cloudflare/cloudflared:latest 
-    container_name: cloudflared-leela
-    command: tunnel run
-    environment:
-      - TUNNEL_TOKEN=${CLOUDFLARED_TUNNEL_LEELA}
-    env_file:
-      - ../.env
-    restart: unless-stopped
-# Tunnel for Nibbler SSH
-  cloudflared-nibbler:
-    image: cloudflare/cloudflared:latest 
-    container_name: cloudflared-nibbler
-    command: tunnel run
-    environment:
-      - TUNNEL_TOKEN=${CLOUDFLARED_TUNNEL_NIBBLER}
-    env_file:
-      - ../.env
-    restart: unless-stopped
-# Tunnel for Scruffy SSH
-#  cloudflared-scruffy:
-#    image: cloudflare/cloudflared:latest 
-#    container_name: cloudflared-scruffy
-#    command: tunnel run
-#    environment:
-#      - TUNNEL_TOKEN=${CLOUDFLARED_TUNNEL_SCRUFFY}
-#    env_file:
-#      - ../.env
-#    restart: unless-stopped
+ cloudflare-truenas:
+   image: cloudflare/cloudflared:latest 
+   container_name: cloudflared-truenas
+   command: tunnel run
+   environment:
+     - TUNNEL_TOKEN=${CLOUDFLARED_TUNNEL_NAS}
+   restart: unless-stopped
