@@ -14,4 +14,6 @@ services:
     volumes:
       - ~/docker/plex/appdata:/config
       - /mnt/media:/nas/media
+    devices:
+      - /dev/dri:/dev/dri # Map for hardware acceleration
     restart: unless-stopped

@@ -11,6 +11,8 @@ services:
     volumes:
       - /home/jeffrey/docker/serge/appdata/weights:/usr/src/app/weights
       - /home/jeffrey/docker/serge/appdata/datadb:/data/db
+    devices:
+      - /dev/dri:/dev/dri # Map for hardware acceleration
     restart: on-failure
 
   cloudflare-serge: 
