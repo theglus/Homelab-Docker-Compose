@@ -21,13 +21,15 @@ services:
 
   gluetun:
     container_name: expressvpn
-    image: qmcgaw/gluetun:v3.34
+    image: qmcgaw/gluetun:v3.34.1
     environment:
       - VPN_SERVICE_PROVIDER=expressvpn
       - OPENVPN_USER=${VPN_USERNAME}
       - OPENVPN_PASSWORD=${VPN_PASSWORD}
       - SERVER_COUNTRIES=USA
     network_mode: bridge
+    volumes:
+      - ~/docker/qbittorrent/appdata/gluetun:/gluetun
     ports:
       - 6881:6881
       - 6881:6881/udp
