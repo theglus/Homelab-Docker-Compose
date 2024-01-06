@@ -3,7 +3,7 @@ version: "3.9"
 services:
   serge:
     container_name: serge
-    image: ghcr.io/nsarrazin/serge:latest
+    image: ghcr.io/serge-chat/serge:latest
     environment:
       - TZ=America/Los_Angeles
     ports:
