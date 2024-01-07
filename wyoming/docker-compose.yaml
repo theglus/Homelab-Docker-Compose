@@ -1,0 +1,33 @@
+---
+version: "3.0"
+services:
+  openwakeword:
+    container_name: openwakeword
+    image: rhasspy/wyoming-openwakeword
+    environment:
+      - PUID=1000
+      - PGID=999
+      - TZ=America/Los_Angeles
+    ports:
+        - 10400:10400
+    volumes:
+      - ~/docker/wyoming/appdata/openwakeword:/data
+#     - ~/docker/wyoming/appdata/openwakeword:/custom
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    command: --preload-model 'ok_nabu'
+    restart: unless-stopped
+  porcupine:
+    container_name: porcupine
+    image: rhasspy/wyoming-porcupine1
+    environment:
+      - PUID=1000
+      - PGID=999
+      - TZ=America/Los_Angeles
+    ports:
+        - 10500:10400
+    volumes:
+      - ~/docker/wyoming/appdata/porcupine:/data
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    restart: unless-stopped
