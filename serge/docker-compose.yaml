@@ -21,6 +21,7 @@ services:
     command: tunnel run
     environment:
       - TUNNEL_TOKEN=${CLOUDFLARED_TUNNEL_SERGE}
+    mem_limit: 1g
     restart: unless-stopped
 
 volumes:
