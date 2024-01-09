@@ -2,10 +2,11 @@
 version: "3"
 services:
 # Tunnel used for TrueNAS
- cloudflare-truenas:
-   image: cloudflare/cloudflared:latest 
-   container_name: cloudflared-truenas
-   command: tunnel run
-   environment:
-     - TUNNEL_TOKEN=${CLOUDFLARED_TUNNEL_NAS}
-   restart: unless-stopped
+  cloudflare-truenas:
+    image: cloudflare/cloudflared:latest 
+    container_name: cloudflared-truenas
+    command: tunnel run
+    environment:
+      - TUNNEL_TOKEN=${CLOUDFLARED_TUNNEL_NAS}
+    mem_limit: 1g
+    restart: unless-stopped
