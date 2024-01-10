@@ -10,6 +10,7 @@ services:
       - TZ=America/Los_Angeles
       - VERSION=docker
       - PLEX_CLAIM=${PLEX_CLAIM_TOKEN}
+    mem_limit: 16g
     network_mode: host
     volumes:
       - ~/docker/plex/appdata:/config
