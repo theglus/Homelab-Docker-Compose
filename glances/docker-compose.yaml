@@ -1,0 +1,16 @@
+version: "3.5"
+services:
+  glances:
+    container_name: glances
+    image: joweisberg/glances:latest
+    pid: host
+    environment:
+      - TZ=America/Los_Angeles
+      - GLANCES_OPT=--webserver --disable-left-sidebar  --disable-process
+    mem_limit: 2g
+    ports:
+      - 61208:61208
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ~/docker/glances/appdata:/glances/conf
+    restart: unless-stopped
