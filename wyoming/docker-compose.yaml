@@ -8,6 +8,7 @@ services:
       - PUID=1000
       - PGID=999
       - TZ=America/Los_Angeles
+    mem_limit: 8g
     ports:
         - 10400:10400
     volumes:
@@ -24,6 +25,7 @@ services:
       - PUID=1000
       - PGID=999
       - TZ=America/Los_Angeles
+    mem_limit: 8g
     ports:
         - 10500:10400
     volumes:
