@@ -4,9 +4,15 @@ services:
     tailscale:
         container_name: tailscaled
         image: tailscale/tailscale
-        environment:
-            - TS_AUTHKEY=${AUTH_KEY}
+        # environment:
+        #     - TS_AUTHKEY=${AUTH_KEY}
         network_mode: host
         volumes:
             - ~/docker/tailscale:/var/lib
             - /dev/net/tun:/dev/net/tun
+        cap_add:                                    # Required for tailscale to work
+          - net_admin
+          - sys_module
+        command: tailscaled
+        privileged: true 
+        restart: unless-stopped
