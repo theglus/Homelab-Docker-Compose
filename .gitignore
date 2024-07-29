@@ -1,6 +1,8 @@
 # Ignore App Data
 */appdata
 */downloads
+# Ignore App DB
+ghost/db
 # Ignore Folders
 resilio/sync/*
 resilio/downloads/*
