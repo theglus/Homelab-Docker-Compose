@@ -33,9 +33,11 @@ But you can't have a mesh network with just one puck, so in order to eliminate t
 
 I routinely stream games via Moonlight from my desktop computer (in the Office) to the TV (in the Living Room). Initially, I did this over WiFi, but had very little success. Fortunately, there is a coax outlet right under my desk, so using ethernet-over-coax, I am able to hardwire to the network switch in the Living Room.
 ## 🫙 Containers
-* [1Password](https://hub.docker.com/r/1password/op)
 * [Cloudflared](https://hub.docker.com/r/cloudflare/cloudflared)
+* [Code Server](https://hub.docker.com/r/linuxserver/code-server)
 * [FileBot](https://hub.docker.com/r/jlesage/filebot)
+* [Ghost Blog](https://hub.docker.com/_/ghost)
+* [Glances](https://hub.docker.com/r/nicolargo/glances)
 * [Heimdall](https://docs.linuxserver.io/images/docker-heimdall)
 * [OpenVPN](https://hub.docker.com/r/dperson/openvpn-client)
 * [Plex](https://docs.linuxserver.io/images/docker-plex)
@@ -43,4 +45,7 @@ I routinely stream games via Moonlight from my desktop computer (in the Office) 
 * [qBittorrent](https://docs.linuxserver.io/images/docker-qbittorrent)
 * [Resilio Sync](https://docs.linuxserver.io/images/docker-resilio-sync)
 * [Serge](https://github.com/nsarrazin/serge)
-
+* [Tailscale](https://hub.docker.com/r/tailscale/tailscale)
+* [Uptime Kuma](https://hub.docker.com/r/louislam/uptime-kuma)
+* [Wyoming- OpenWakeWord](https://hub.docker.com/r/rhasspy/wyoming-openwakeword) 
+* [Wyoming - Porcupine](https://hub.docker.com/r/rhasspy/wyoming-porcupine1)
