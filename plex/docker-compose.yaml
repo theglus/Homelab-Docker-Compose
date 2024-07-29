@@ -18,3 +18,11 @@ services:
     devices:
       - /dev/dri:/dev/dri # Map for hardware acceleration
     restart: unless-stopped
+
+  # watchtower-plex:
+  #   container_name: watchtower-plex
+  #   image: containrrr/watchtower
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #   command: --cleanup
+  #   restart: unless-stopped
