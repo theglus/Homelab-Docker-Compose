@@ -1,0 +1,51 @@
+version: '3.1'
+services:
+
+  ghost:
+    container_name: ghost
+    image: ghost:5-alpine
+    restart: always
+    ports:
+      - 8080:2368
+    environment:
+      # see https://ghost.org/docs/config/#configuration-options
+      database__client: mysql
+      database__connection__host: db
+      database__connection__user: root
+      database__connection__password: "${DB_PASSWORD}"
+      database__connection__database: ghost
+      # this url value is just an example, and is likely wrong for your environment!
+      url: https://glusman.llc
+      # contrary to the default mentioned in the linked documentation, this image defaults to NODE_ENV=production (so development mode needs to be explicitly specified if desired)
+      # Mailgun SMTP configuration
+      mail__transport: "${MAIL_TRANSPORT}"
+      mail__options__service: "${MAIL_SERVICE}"
+      mail__options__host: "${MAIL_HOST}"
+      mail__options__port: "${MAIL_PORT}"
+      mail__options__secureConnection: "${MAIL_SECURE_CONNECTION}"
+      mail__options__auth__user: "${MAIL_USER}"
+      mail__options__auth__pass: "${MAIL_PASSWORD}"
+    volumes:
+      - ~/docker/ghost/appdata:/var/lib/ghost/content
+
+  db:
+    container_name: ghost-db
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: "${DB_PASSWORD}"
+    volumes:
+      - ~/docker/ghost/db:/var/lib/mysql
+
+  cloudflare-ghost:  
+    container_name: cloudflared-ghost
+    image: cloudflare/cloudflared     
+    command: tunnel run
+    environment:
+      - TUNNEL_TOKEN=${CLOUDFLARED_TUNNEL_GHOST}
+    mem_limit: 1g
+    restart: unless-stopped
+
+volumes:
+  ghost:
+  db:
