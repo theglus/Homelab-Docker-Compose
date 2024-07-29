@@ -16,6 +16,14 @@ services:
       - ~/docker/portainer/appdata:/data
     restart: unless-stopped
 
+  # watchtower-portainer:
+  #   container_name: watchtower-portainer
+  #   image: containrrr/watchtower
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #   command: --cleanup
+  #   restart: unless-stopped
+
   # caddy:
   #   image: caddy:latest
   #   container_name: caddy
