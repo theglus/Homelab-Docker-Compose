@@ -1,0 +1,2 @@
+# Run the backup every Sunday at 2 AM
+0 2 * * 0 /backup/backup.sh >> /var/log/backup.log 2>&1
