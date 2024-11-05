@@ -46,6 +46,21 @@ services:
     mem_limit: 1g
     restart: unless-stopped
 
+  # backup:
+  #   container_name: ghost-backup
+  #   image: alpine:latest
+  #   entrypoint: ["sh", "-c", "crond -f"]  # Start cron daemon in foreground
+  #   environment:
+  #     DB_PASSWORD: "${DB_PASSWORD}"
+  #     BACKUP_LOCATION: "/mnt/backups/ghost"  # or remote storage location if using rclone
+  #   volumes:
+  #     - ~/docker/ghost/appdata:/var/lib/ghost/content
+  #     - ~/docker/ghost/db:/var/lib/mysql
+  #     - ~/docker/ghost/backup:/backup  # Mount the backup scripts
+  #     - ~/docker/ghost/backup/backup_cron:/etc/crontabs/root  # Mount cron schedule
+  #     - /mnt/backups/ghost:/mnt/backups/ghost  # Backup location
+  #   restart: unless-stopped
+
 volumes:
   ghost:
   db:
