@@ -1,4 +1,4 @@
-Learn more: [An Introduction to LVM Concepts, Terminology, and Operations(https://www.digitalocean.com/community/tutorials/an-introduction-to-lvm-concepts-terminology-and-operations)
+Learn more: [An Introduction to LVM Concepts, Terminology, and Operations](https://www.digitalocean.com/community/tutorials/an-introduction-to-lvm-concepts-terminology-and-operations)
 ## Current mapping
 ```text
 nvme0n1                   931.5G disk             
