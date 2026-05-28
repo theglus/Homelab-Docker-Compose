@@ -21,15 +21,21 @@ services:
 
   gluetun:
     container_name: expressvpn
-    image: qmcgaw/gluetun:v3.34.1
+    image: qmcgaw/gluetun:v3.41.1
     environment:
-      - VPN_SERVICE_PROVIDER=expressvpn
+      - VPN_SERVICE_PROVIDER=custom
+      - VPN_TYPE=openvpn
+      - OPENVPN_CUSTOM_CONFIG=/gluetun/custom/expressvpn.ovpn
       - OPENVPN_USER=${VPN_USERNAME}
       - OPENVPN_PASSWORD=${VPN_PASSWORD}
-      - SERVER_COUNTRIES=USA
+      - HEALTH_SMALL_CHECK_TYPE=dns
+      - OPENVPN_VERSION=2.5
+      - FIREWALL_OUTBOUND_SUBNETS=192.168.86.0/24
     network_mode: bridge
     volumes:
       - ~/docker/qbittorrent/appdata/gluetun:/gluetun
+    devices:
+      - /dev/net/tun:/dev/net/tun
     ports:
       - 6881:6881
       - 6881:6881/udp
@@ -39,6 +45,7 @@ services:
       - 7878:7878 # radarr
     cap_add:
       - NET_ADMIN
+      - NET_RAW
     restart: unless-stopped
 
   radarr:
