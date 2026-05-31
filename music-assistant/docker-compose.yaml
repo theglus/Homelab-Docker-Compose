@@ -16,3 +16,9 @@ services:
     security_opt:
       - apparmor:unconfined
     restart: unless-stopped
+  ytmusic:
+    container_name: ytmusic
+    image: brainicism/bgutil-ytdlp-pot-provider:latest
+    ports:
+      - "4416:4416"
+    restart: unless-stopped
