@@ -1,0 +1,24 @@
+services:
+  music-assistant:
+    container_name: music-assistant
+    image: ghcr.io/music-assistant/server:latest
+    environment:
+      - PUID=1000
+      - PGID=999
+      - TZ=America/Los_Angeles
+      - LOG_LEVEL=error
+    network_mode: host
+    volumes:
+      - ~/docker/music-assistant/appdata:/data/
+    cap_add:
+      - SYS_ADMIN
+      - DAC_READ_SEARCH
+    security_opt:
+      - apparmor:unconfined
+    restart: unless-stopped
+  ytmusic:
+    container_name: ytmusic
+    image: brainicism/bgutil-ytdlp-pot-provider:latest
+    ports:
+      - "4416:4416"
+    restart: unless-stopped
