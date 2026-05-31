@@ -1,5 +1,4 @@
 ---
-version: "2.1"
 services:
   code-server:
     container_name: code-server
@@ -18,5 +17,6 @@ services:
       - 8443:8443
     volumes:
       - ~/docker/code-server/appdata:/config
-      - ~/docker:/leela  
+      - ~/docker:/leela 
+      - ~/.ssh:/config/.ssh:ro 
     restart: unless-stopped
