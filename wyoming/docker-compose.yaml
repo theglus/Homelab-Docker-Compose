@@ -13,10 +13,12 @@ services:
         - 10400:10400
     volumes:
       - ~/docker/wyoming/appdata/openwakeword:/data
-#     - ~/docker/wyoming/appdata/openwakeword:/custom
+      - ~/docker/wyoming/appdata/openwakeword:/custom
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
-    command: --preload-model 'ok_nabu'
+    command:
+      --preload-model ok_nabu
+      --custom-model-dir /custom
     restart: unless-stopped
   porcupine:
     container_name: porcupine
