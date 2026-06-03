@@ -1,0 +1,11 @@
+services:
+  ollama:
+    container_name: ollama
+    image: ollama/ollama:latest
+    environment:
+      - TZ=America/Los_Angeles
+    ports:
+      - 11434:11434
+    volumes:
+      - ~/docker/ollama/appdata/:/root/.ollama
+    restart: unless-stopped
