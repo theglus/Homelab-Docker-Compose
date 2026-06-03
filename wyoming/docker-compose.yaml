@@ -35,3 +35,35 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     restart: unless-stopped
+  faster-whisper:
+    container_name: faster-whisper
+    image: rhasspy/wyoming-faster-whisper
+    environment:
+      - PUID=1000
+      - PGID=999
+      - TZ=America/Los_Angeles
+    mem_limit: 2g
+    ports:
+      - 10300:10300
+    volumes:
+      - ~/docker/wyoming/appdata/faster-whisper:/data
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    command: --model base-int8 --language en
+    restart: unless-stopped
+  piper:
+    container_name: piper
+    image: rhasspy/wyoming-piper
+    environment:
+      - PUID=1000
+      - PGID=999
+      - TZ=America/Los_Angeles
+    mem_limit: 1g
+    ports:
+      - 10200:10200
+    volumes:
+      - ~/docker/wyoming/appdata/piper:/data
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    command: --voice en_US-norman-medium
+    restart: unless-stopped
