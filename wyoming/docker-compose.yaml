@@ -51,6 +51,8 @@ services:
       - ~/docker/wyoming/appdata/faster-whisper:/data
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
+    devices:
+      - /dev/dri:/dev/dri
     restart: unless-stopped
   piper:
     container_name: piper
