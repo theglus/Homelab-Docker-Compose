@@ -4,8 +4,19 @@ services:
     image: ollama/ollama:latest
     environment:
       - TZ=America/Los_Angeles
+      - OLLAMA_NUM_THREADS=12
+      - OLLAMA_FLASH_ATTENTION=1
+      - OLLAMA_NUM_PARALLEL=1
+      - OLLAMA_MAX_LOADED_MODELS=1
+      - OLLAMA_KEEP_ALIVE=-1
     ports:
       - 11434:11434
     volumes:
       - ~/docker/ollama/appdata/:/root/.ollama
+    deploy:
+      resources:
+        limits:
+          memory: 40g
+        reservations:
+          memory: 4g
     restart: unless-stopped
