@@ -1,5 +1,3 @@
----
-version: "2.1"
 services:
   resilio-sync:
     container_name: resilio-sync
@@ -8,23 +6,17 @@ services:
       - PUID=1000
       - PGID=999
       - TZ=America/Los_Angeles
-    # networks:
-    #   - caddy
-    # labels:
-    #   caddy: sync.planetexpress.casa
-    #   caddy.reverse_proxy: "{{upstreams 8888}}"
-    #   caddy.tls: internal
     ports:
       - 8888:8888
       - 55555:55555
     volumes:
+    # Leela
+      - "~/LeelaSync:/sync/Leela Sync"
       - ~/docker/resilio/appdata:/config
       - ~/docker/resilio/downloads:/downloads
       - ~/docker/resilio/sync:/sync
+    # Nibbler
       - /mnt/media:/sync/media
-      - /mnt/ROMs:/sync/games
+      - /mnt/ROMs:/sync/ROMs
+      - /mnt/Backups/Signal:/sync/Signal
     restart: unless-stopped
-
-# networks:
-#   caddy:
-#     external: true
