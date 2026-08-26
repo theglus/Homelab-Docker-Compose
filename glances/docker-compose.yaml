@@ -1,8 +1,7 @@
-version: "3.5"
 services:
   glances:
     container_name: glances
-    image: joweisberg/glances:latest
+    image: nicolargo/glances:latest-full
     pid: host
     environment:
       - TZ=America/Los_Angeles
@@ -12,5 +11,6 @@ services:
       - 61208:61208
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
       - ~/docker/glances/appdata:/glances/conf
     restart: unless-stopped
