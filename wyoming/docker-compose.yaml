@@ -1,5 +1,4 @@
 ---
-version: "3.0"
 services:
   openwakeword:
     container_name: openwakeword
@@ -13,10 +12,12 @@ services:
         - 10400:10400
     volumes:
       - ~/docker/wyoming/appdata/openwakeword:/data
-#     - ~/docker/wyoming/appdata/openwakeword:/custom
+      - ~/docker/wyoming/appdata/openwakeword:/custom
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
-    command: --preload-model 'ok_nabu'
+    command:
+      --preload-model ok_nabu
+      --custom-model-dir /custom
     restart: unless-stopped
   porcupine:
     container_name: porcupine
@@ -30,6 +31,42 @@ services:
         - 10500:10400
     volumes:
       - ~/docker/wyoming/appdata/porcupine:/data
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    restart: unless-stopped
+  faster-whisper:
+    container_name: faster-whisper
+    image: linuxserver/faster-whisper
+    environment:
+      - PUID=1000
+      - PGID=999
+      - TZ=America/Los_Angeles
+      - WHISPER_MODEL=base-int8
+      - WHISPER_LANG=en
+      - WHISPER_BEAM=1
+    mem_limit: 2g
+    ports:
+      - 10300:10300
+    volumes:
+      - ~/docker/wyoming/appdata/faster-whisper:/data
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    devices:
+      - /dev/dri:/dev/dri
+    restart: unless-stopped
+  piper:
+    container_name: piper
+    image: linuxserver/piper
+    environment:
+      - PUID=1000
+      - PGID=999
+      - TZ=America/Los_Angeles
+      - PIPER_VOICE=en_US-norman-medium
+    mem_limit: 1g
+    ports:
+      - 10200:10200
+    volumes:
+      - ~/docker/wyoming/appdata/piper:/data
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     restart: unless-stopped
