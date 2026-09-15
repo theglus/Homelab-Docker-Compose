@@ -12,5 +12,5 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-      - ~/docker/glances/appdata:/glances/conf
+      - /home/jeffrey/docker/glances/appdata:/glances/conf
     restart: unless-stopped
