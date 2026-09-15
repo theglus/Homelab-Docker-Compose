@@ -1,5 +1,3 @@
----
-version: '3.3'
 services:
     tailscale:
         container_name: tailscaled
@@ -8,7 +6,7 @@ services:
         #     - TS_AUTHKEY=${AUTH_KEY}
         network_mode: host
         volumes:
-            - ~/docker/tailscale:/var/lib
+            - /home/jeffrey/docker/tailscale:/var/lib
             - /dev/net/tun:/dev/net/tun
         cap_add:                                    # Required for tailscale to work
           - net_admin
