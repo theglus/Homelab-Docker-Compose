@@ -1,0 +1,13 @@
+services:
+  dockhand:
+    container_name: dockhand
+    image: fnsys/dockhand:latest
+    environment:
+      - TZ=America/Los_Angeles
+    ports:
+      - 3000:3000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /home/jeffrey/docker/dockhand/appdata:/app/data
+      - /home/jeffrey/docker:/docker
+    restart: unless-stopped
