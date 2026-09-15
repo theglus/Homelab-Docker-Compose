@@ -1,4 +1,3 @@
----
 services:
   openwakeword:
     container_name: openwakeword
@@ -11,8 +10,8 @@ services:
     ports:
         - 10400:10400
     volumes:
-      - ~/docker/wyoming/appdata/openwakeword:/data
-      - ~/docker/wyoming/appdata/openwakeword:/custom
+      - /home/jeffrey/docker/wyoming/appdata/openwakeword:/data
+      - /home/jeffrey/docker/wyoming/appdata/openwakeword:/custom
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     command:
@@ -30,7 +29,7 @@ services:
     ports:
         - 10500:10400
     volumes:
-      - ~/docker/wyoming/appdata/porcupine:/data
+      - /home/jeffrey/docker/wyoming/appdata/porcupine:/data
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     restart: unless-stopped
@@ -48,7 +47,7 @@ services:
     ports:
       - 10300:10300
     volumes:
-      - ~/docker/wyoming/appdata/faster-whisper:/data
+      - /home/jeffrey/docker/wyoming/appdata/faster-whisper:/data
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     devices:
@@ -66,7 +65,7 @@ services:
     ports:
       - 10200:10200
     volumes:
-      - ~/docker/wyoming/appdata/piper:/data
+      - /home/jeffrey/docker/wyoming/appdata/piper:/data
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     restart: unless-stopped
