@@ -9,7 +9,7 @@ services:
       - LOG_LEVEL=error
     network_mode: host
     volumes:
-      - ~/docker/music-assistant/appdata:/data/
+      - /home/jeffrey/docker/music-assistant/appdata:/data/
     cap_add:
       - SYS_ADMIN
       - DAC_READ_SEARCH
