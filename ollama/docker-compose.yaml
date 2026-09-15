@@ -12,7 +12,7 @@ services:
     ports:
       - 11434:11434
     volumes:
-      - ~/docker/ollama/appdata/:/root/.ollama
+      - /home/jeffrey/docker/ollama/appdata/:/root/.ollama
     deploy:
       resources:
         limits:
