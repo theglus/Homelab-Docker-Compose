@@ -11,12 +11,14 @@ services:
       - 55555:55555
     volumes:
     # Leela
-      - "~/LeelaSync:/sync/Leela Sync"
-      - ~/docker/resilio/appdata:/config
-      - ~/docker/resilio/downloads:/downloads
-      - ~/docker/resilio/sync:/sync
+      - "/home/jeffrey/LeelaSync:/sync/Leela Sync"
+      - /home/jeffrey/docker/resilio/appdata:/config
+      - /home/jeffrey/docker/resilio/downloads:/downloads
+      - /home/jeffrey/docker/resilio/sync:/sync
     # Nibbler
-      - /mnt/media:/sync/media
-      - /mnt/ROMs:/sync/ROMs
+      - /home/jeffrey/docker/resilio/appdata:/config
+      - /mnt/sync:/sync
+      - /mnt/media:/sync/Media
       - /mnt/Backups/Signal:/sync/Signal
+
     restart: unless-stopped
