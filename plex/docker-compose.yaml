@@ -1,5 +1,3 @@
----
-version: "2.1"
 services:
   plex:
     container_name: plex
@@ -13,16 +11,8 @@ services:
     mem_limit: 16g
     network_mode: host
     volumes:
-      - ~/docker/plex/appdata:/config
-      - /mnt/media:/nas/media
+      - /home/jeffrey/docker/plex/appdata:/config
+      - /mnt/media:/media
     devices:
       - /dev/dri:/dev/dri # Map for hardware acceleration
     restart: unless-stopped
-
-  # watchtower-plex:
-  #   container_name: watchtower-plex
-  #   image: containrrr/watchtower
-  #   volumes:
-  #     - /var/run/docker.sock:/var/run/docker.sock
-  #   command: --cleanup
-  #   restart: unless-stopped
