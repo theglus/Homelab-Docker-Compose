@@ -10,7 +10,7 @@ services:
       - 10014:80
       - 10015:443
     volumes:
-      -/home/jeffrey/docker/heimdall/appdata:/config
+      - /home/jeffrey/docker/heimdall/appdata:/config
     restart: unless-stopped
 
   cloudflare-heimdall:  
