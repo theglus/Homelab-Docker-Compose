@@ -26,7 +26,7 @@ services:
       mail__options__auth__user: "${MAIL_USER}"
       mail__options__auth__pass: "${MAIL_PASSWORD}"
     volumes:
-      - ~/docker/ghost/appdata:/var/lib/ghost/content
+      - /home/jeffrey/docker/ghost/appdata:/var/lib/ghost/content
 
   db:
     container_name: ghost-db
@@ -35,7 +35,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: "${DB_PASSWORD}"
     volumes:
-      - ~/docker/ghost/db:/var/lib/mysql
+      - /home/jeffrey/docker/ghost/db:/var/lib/mysql
 
   cloudflare-ghost:  
     container_name: cloudflared-ghost
