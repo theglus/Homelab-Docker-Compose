@@ -1,0 +1,12 @@
+services:
+  esphome:
+    container_name: esphome
+    image: ghcr.io/esphome/esphome:stable
+    environment:
+      - TZ=America/Los_Angeles
+    network_mode: host
+
+    volumes:
+      - /home/jeffrey/docker/esphome/appdata:/config
+
+    restart: unless-stopped
