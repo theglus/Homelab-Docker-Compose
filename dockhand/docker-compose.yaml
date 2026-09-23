@@ -5,7 +5,8 @@ services:
     environment:
       - TZ=America/Los_Angeles
     ports:
-      - 3000:3000
+      - "${LOCAL_IP}:3000:3000"
+      - "${TAILSCALE_IP}:3000:3000"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /home/jeffrey/docker/dockhand/appdata:/app/data
