@@ -11,6 +11,12 @@ services:
     volumes:
       - /home/jeffrey/docker/qbittorrent/appdata:/config
       - /mnt/media:/media
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:10095/ >/dev/null || exit 1"]
+      interval: 5m
+      timeout: 10s
+      retries: 3
+      start_period: 30s
     restart: unless-stopped
     depends_on:
       - gluetun
@@ -33,12 +39,21 @@ services:
     devices:
       - /dev/net/tun:/dev/net/tun
     ports:
-      - 6881:6881
-      - 6881:6881/udp
-      - 10095:10095 # qBittorrent
-      - 9117:9117 # jackett
-      - 8989:8989 # sonarr
-      - 7878:7878 # radarr
+      # Peer traffic
+      - "6881:6881"
+      - "6881:6881/udp"
+      # qBittorrent WebUI
+      - "${LOCAL_IP}:10095:10095"
+      - "${TAILSCALE_IP}:10095:10095"
+      # Jackett
+      - "${LOCAL_IP}:9117:9117"
+      - "${TAILSCALE_IP}:9117:9117"
+      # Sonarr
+      - "${LOCAL_IP}:8989:8989"
+      - "${TAILSCALE_IP}:8989:8989"
+      # Radarr
+      - "${LOCAL_IP}:7878:7878"
+      - "${TAILSCALE_IP}:7878:7878"
     cap_add:
       - NET_ADMIN
       - NET_RAW
@@ -56,6 +71,12 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /home/jeffrey/docker/qbittorrent/appdata/radarr:/config
       - /mnt/media:/media
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:7878/ >/dev/null || exit 1"]
+      interval: 5m
+      timeout: 10s
+      retries: 3
+      start_period: 30s
     restart: unless-stopped
     depends_on:
       - jackett
@@ -73,6 +94,12 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /home/jeffrey/docker/qbittorrent/appdata/sonarr:/config
       - /mnt/media:/media
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:8989/ >/dev/null || exit 1"]
+      interval: 5m
+      timeout: 10s
+      retries: 3
+      start_period: 30s
     restart: unless-stopped
     depends_on:
       - jackett
@@ -88,4 +115,10 @@ services:
     network_mode: service:gluetun
     volumes:
       - /home/jeffrey/docker/qbittorrent/appdata:/config
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:9117/ >/dev/null || exit 1"]
+      interval: 5m
+      timeout: 10s
+      retries: 3
+      start_period: 30s
     restart: unless-stopped
