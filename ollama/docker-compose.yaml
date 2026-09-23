@@ -10,7 +10,8 @@ services:
       - OLLAMA_MAX_LOADED_MODELS=1
       - OLLAMA_KEEP_ALIVE=-1
     ports:
-      - 11434:11434
+      - "${LOCAL_IP}:11434:11434"
+      - "${TAILSCALE_IP}:11434:11434"
     volumes:
       - /home/jeffrey/docker/ollama/appdata/:/root/.ollama
     deploy:
