@@ -7,8 +7,11 @@ services:
       - PGID=999
       - TZ=America/Los_Angeles
     ports:
-      - 8888:8888
-      - 55555:55555
+      # Resilio Web UI
+      - "${LOCAL_IP}:8888:8888"
+      - "${TAILSCALE_IP}:8888:8888"
+      # Resilio sync/peer traffic
+      - "55555:55555"
     volumes:
     # Leela
       - "/home/jeffrey/LeelaSync:/sync/Leela Sync"
@@ -20,5 +23,12 @@ services:
       - /mnt/sync:/sync
       - /mnt/media:/sync/Media
       - /mnt/Backups/Signal:/sync/Signal
+
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:8888/ >/dev/null || exit 1"]
+      interval: 5m
+      timeout: 10s
+      retries: 3
+      start_period: 30s
 
     restart: unless-stopped
