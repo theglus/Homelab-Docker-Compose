@@ -13,18 +13,12 @@ services:
       database__connection__user: root
       database__connection__password: "${DB_PASSWORD}"
       database__connection__database: ghost
-      # TEMPORARY: allow admin login while Mailgun is unavailable
-      # security__staffDeviceVerification: "false"
-      # this url value is just an example, and is likely wrong for your environment!
       url: https://glusman.llc
-      # contrary to the default mentioned in the linked documentation, this image defaults to NODE_ENV=production (so development mode needs to be explicitly specified if desired)
       # Mailgun SMTP configuration
       mail__transport: "${MAIL_TRANSPORT}"
-      # mail__options__service: "${MAIL_SERVICE}"
       mail__from: "${MAIL_USER}"
       mail__options__host: "${MAIL_HOST}"
       mail__options__port: "${MAIL_PORT}"
-      # mail__options__secureConnection: "${MAIL_SECURE_CONNECTION}"
       mail__options__secure: "false"
       mail__options__auth__user: "${MAIL_USER}"
       mail__options__auth__pass: "${MAIL_PASSWORD}"
