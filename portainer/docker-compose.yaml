@@ -12,7 +12,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-      - ~/docker/portainer/appdata:/data
+      - /home/jeffrey/docker/portainer/appdata:/data
     restart: unless-stopped
 
   # watchtower-portainer:
