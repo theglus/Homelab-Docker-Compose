@@ -1,0 +1,19 @@
+services:
+  pocket-id:
+    container_name: pocket-id
+    image: ghcr.io/pocket-id/pocket-id:v2
+    environment:
+      - TZ=America/Los_Angeles
+      - APP_URL=https://id.planetexpress.casa
+      - ENCRYPTION_KEY=${POCKET_ID_ENCRYPTION_KEY}
+    volumes:
+      - /home/jeffrey/docker/pocket-id/appdata:/app/data
+    restart: unless-stopped
+  cloudflare-pocket-id:  
+    container_name: cloudflared-pocket-id
+    image: cloudflare/cloudflared     
+    command: tunnel run
+    environment:
+      - TUNNEL_TOKEN=${CLOUDFLARED_TUNNEL_POCKET_ID}
+    mem_limit: 1g
+    restart: unless-stopped
