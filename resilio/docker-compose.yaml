@@ -17,9 +17,7 @@ services:
       - "/home/jeffrey/LeelaSync:/sync/Leela Sync"
       - /home/jeffrey/docker/resilio/appdata:/config
       - /home/jeffrey/docker/resilio/downloads:/downloads
-      - /home/jeffrey/docker/resilio/sync:/sync
     # Nibbler
-      - /home/jeffrey/docker/resilio/appdata:/config
       - /mnt/sync:/sync
       - /mnt/media:/sync/Media
       - /mnt/Backups/Signal:/sync/Signal
